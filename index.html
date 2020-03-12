@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/all.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wraper">
+        <header class="l-header">
+
+            <ul class="m-menu">
+                <li class="m-menu-item selected" id="myTask">My Tasks</li>
+                <li class="m-menu-item" id="inProgress">In Progress</li>
+                <li class="m-menu-item" id="completed">Completed</li>
+            </ul>
+        </header>
+        <!-- todo-list -->
+        <div class="todo-list">
+            <!-- task -->
+            <div class="task task-add">
+                <!-- task add-content -->
+                <div class="task-content" id="js-content">
+                    <div class="task-col task-col-first">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="task-col task-col-title">
+                        <span class="task-titles">Add Task</span>
+                    </div>
+                </div>
+
+                <!-- task content -->
+                <div class="task-content">
+                    <div class="task-col task-col-first"></div>
+                    <div class="task-col task-col-title">
+                        <input type="text" class="task-title" placeholder="Type Your Task Title Here...">
+                    </div>
+                    <div class="task-col task-col-last">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+
+                <!-- task detail -->
+                <div class="task-detail">
+                    <div class="task-form">
+                        <div class="task-row">
+                            <div class="task-form-header">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Deadline</span>
+                            </div>
+                            <div class="task-form-body">
+                                <div class="task-form-date">
+                                    <input type="date" id="j-date" name="date">
+
+                                    <input type="time" id="j-time">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-row">
+                            <div class="task-form-header">
+                                <i class="far fa-file"></i>
+                                <span>File</span>
+                            </div>
+                            <div class="task-form-body">
+                                <label class="task-form-file">
+                            <input type="file" id="files">
+                            <i class="fas fa-plus"></i>
+                        </label>
+                            </div>
+                        </div>
+                        <div class="task-row">
+                            <div class="task-form-header">
+                                <i class="far fa-comment-dots"></i>
+                                <span>Comment</span>
+                            </div>
+                            <div class="task-form-body">
+                                <div class="task-form-textarea" id="task-form-textarea">
+                                    <textarea placeholder="Type Your Blahblahblah in here..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-form-submit">
+                        <a class="button button-cancel">
+                            <i class="fas fa-times"></i>
+                            <span>Cancel</span>
+                        </a>
+                        <a class="button button-save">
+                            <i class="fas fa-check"></i>
+                            <span>Add</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- task -->
+            <div class="taskblock">
+                <!-- <div class="task">  -->
+                <!-- task content -->
+                <!-- <div class="task-content">
+                        <div class="task-col task-col-first">
+                            <label class="task-checkbox">
+                    <input type="checkbox">
+                    <i class="fas fa-square"></i>
+                </label> 
+                        </div>-->
+                <!-- <div class="task-col task-col-title">
+                            <input type="text" class="task-title" placeholder="feed my rabbit.">
+                            <div class="task-info">
+                                <div class="task-col">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>2018/6/10</span>
+                                </div>
+                            </div>
+                        </div> -->
+                <!-- <div class="task-col task-col-last">
+                            <i class="far fa-star"></i>
+                            <i class="fas fa-pencil-alt"></i>
+                        </div> -->
+                <!-- </div> -->
+
+                <!-- task detail -->
+                <!-- <div class="task-detail">
+                        <div class="task-form">
+                            <div class="task-row">
+                                <div class="task-form-header">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>Deadline</span>
+                                </div>
+                                <div class="task-form-body">
+                                    <div class="task-form-date">
+                                        <input type="date">
+                                        <input type="time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="task-row">
+                                <div class="task-form-header">
+                                    <i class="far fa-file"></i>
+                                    <span>File</span>
+                                </div>
+                                <div class="task-form-body">
+                                    <label class="task-form-file">
+                            <input type="file">
+                            <i class="fas fa-plus"></i>
+                        </label>
+                                </div>
+                            </div>
+                            <div class="task-row">
+                                <div class="task-form-header">
+                                    <i class="far fa-comment-dots"></i>
+                                    <span>Comment</span>
+                                </div>
+                                <div class="task-form-body">
+                                    <div class="task-form-textarea">
+                                        <textarea placeholder="Type Your Blahblahblah in here..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-form-submit">
+                            <a class="button button-cancel">
+                                <i class="fas fa-times"></i>
+                                <span>Cancel</span>
+                            </a>
+                            <a class="button button-save">
+                                <i class="fas fa-check"></i>
+                                <span>Save</span>
+                            </a>
+                        </div>
+                    </div> -->
+                <!-- </div> -->
+            </div>
+
+            <!-- task -->
+            <!-- <div class="task">
+              <task content -->
+            <!-- <div class="task-content">
+                    <div class="task-col task-col-first">
+                        <label class="task-checkbox">
+                    <input type="checkbox">
+                    <i class="fas fa-square"></i>
+                </label>
+                    </div>
+                    <div class="task-col task-col-title">
+                        <input type="text" class="task-title" placeholder="feed my cat.">
+                        <div class="task-info">
+                            <div class="task-col">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>8/7</span>
+                            </div>
+                            <div class="task-col">
+                                <i class="far fa-file"></i>
+                            </div>
+                            <div class="task-col">
+                                <i class="far fa-comment-dots"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-col task-col-last">
+                        <i class="far fa-star"></i>
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                </div> -->
+
+            <!-- task detail -->
+            <!-- <div class="task-detail">
+                    <div class="task-form">
+                        <div class="task-row">
+                            <div class="task-form-header">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Deadline</span>
+                            </div>
+                            <div class="task-form-body">
+                                <div class="task-form-date">
+                                    <input type="date">
+                                    <input type="time">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-row">
+                            <div class="task-form-header">
+                                <i class="far fa-file"></i>
+                                <span>File</span>
+                            </div>
+                            <div class="task-form-body">
+                                <label class="task-form-file">
+                            <input type="file">
+                            <i class="fas fa-plus"></i>
+                        </label>
+                            </div>
+                        </div>
+                        <div class="task-row">
+                            <div class="task-form-header">
+                                <i class="far fa-comment-dots"></i>
+                                <span>Comment</span>
+                            </div>
+                            <div class="task-form-body">
+                                <div class="task-form-textarea">
+                                    <textarea placeholder="Type Your Blahblahblah in here..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-form-submit">
+                        <a class="button button-cancel">
+                            <i class="fas fa-times"></i>
+                            <span>Cancel</span>
+                        </a>
+                        <a class="button button-save">
+                            <i class="fas fa-check"></i>
+                            <span>Save</span>
+                        </a>
+                    </div> 
+                </div>
+
+            </div> -->
+
+            <!-- task -->
+            <!-- <div class="task is-highlight">
+                <!-- task content -->
+            <!-- <div class="task-content">
+                    <div class="task-col task-col-first">
+                        <label class="task-checkbox">
+                    <input type="checkbox">
+                    <i class="fas fa-square"></i>
+                </label>
+                    </div>
+                    <div class="task-col task-col-title">
+                        <input type="text" class="task-title" placeholder="learn html and css.">
+                        <div class="task-info">
+                            <div class="task-col">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>8/7</span>
+                            </div>
+                            <div class="task-col">
+                                <i class="far fa-file"></i>
+                            </div>
+                            <div class="task-col">
+                                <i class="far fa-comment-dots"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-col task-col-last">
+                        <i class="far fa-star"></i>
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                </div> -->
+
+            <!-- task detail -->
+            <!-- <div class="task-detail">
+                <div class="task-form">
+                    <div class="task-row">
+                        <div class="task-form-header">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Deadline</span>
+                        </div>
+                        <div class="task-form-body">
+                            <div class="task-form-date">
+                                <input type="date">
+                                <input type="time">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-row">
+                        <div class="task-form-header">
+                            <i class="far fa-file"></i>
+                            <span>File</span>
+                        </div>
+                        <div class="task-form-body">
+                            <label class="task-form-file">
+                            <input type="file">
+                            <i class="fas fa-plus"></i>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="task-row">
+                        <div class="task-form-header">
+                            <i class="far fa-comment-dots"></i>
+                            <span>Comment</span>
+                        </div>
+                        <div class="task-form-body">
+                            <div class="task-form-textarea">
+                                <textarea placeholder="Type Your Blahblahblah in here..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task-form-submit">
+                    <a class="button button-cancel">
+                        <i class="fas fa-times"></i>
+                        <span>Cancel</span>
+                    </a>
+                    <a class="button button-save">
+                        <i class="fas fa-check"></i>
+                        <span>Save</span>
+                    </a>
+                </div>
+            </div> -->
+
+        </div>
+
+        <!-- task -->
+        <!-- <div class="task is-done">
+                <!-- task content -->
+        <!-- <div class="task-content">
+                    <div class="task-col task-col-first">
+                        <label class="task-checkbox">
+                    <input type="checkbox" checked>
+                    <i class="fas fa-square"></i>
+                </label>
+                    </div>
+                    <div class="task-col task-col-title">
+                        <input type="text" class="task-title" placeholder="To-Do List challenge is done.">
+                    </div>
+                    <div class="task-col task-col-last">
+                        <i class="far fa-star"></i>
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                </div> -->
+
+        <!-- task detail -->
+        <!-- <div class="task-detail">
+                    <div class="task-form">
+                        <div class="task-row">
+                            <div class="task-form-header">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Deadline</span>
+                            </div>
+                            <div class="task-form-body">
+                                <div class="task-form-date">
+                                    <input type="date">
+                                    <input type="time">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-row">
+                            <div class="task-form-header">
+                                <i class="far fa-file"></i>
+                                <span>File</span>
+                            </div>
+                            <div class="task-form-body">
+                                <label class="task-form-file">
+                            <input type="file">
+                            <i class="fas fa-plus"></i>
+                        </label>
+                            </div>
+                        </div>
+                        <div class="task-row">
+                            <div class="task-form-header">
+                                <i class="far fa-comment-dots"></i>
+                                <span>Comment</span>
+                            </div>
+                            <div class="task-form-body">
+                                <div class="task-form-textarea">
+                                    <textarea placeholder="Type Your Blahblahblah in here..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-form-submit">
+                        <a class="button button-cancel">
+                            <i class="fas fa-times"></i>
+                            <span>Cancel</span>
+                        </a>
+                        <a class="button button-save">
+                            <i class="fas fa-check"></i>
+                            <span>Save</span>
+                        </a>
+                    </div>
+                </div> -->
+
+    </div>
+    </div>
+    </div>
+
+</body>
+<!-- <script src="js/all.js"></script> -->
+<script src="js/news.js"></script>
+
+
+
+</html>
