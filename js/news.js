@@ -1,22 +1,22 @@
 //宣告
-
+let menuItem = document.querySelectorAll('.m-menu-item');
 let _buttonSave = document.querySelector('.button-save');
+
+
 let Alltext = document.querySelector('.task-title').value;
 let Arrdata = [];
 window.onload = function() {
+    menuClick();
     todo(); //get method
     tabCLick();
     del();
     btnDel();
-    post();
-
-
 
 
 }
 
 //Applications監聽
-_buttonSave.addEventListener('click', addData);
+_buttonSave.addEventListener('click', post);
 // _text.addEventListener('keydown', addData);
 
 
@@ -27,10 +27,22 @@ function todo() {
 
         })
         .then(data => {
-            render(data)
+            render(data);
+
             console.log(data);
             //addData(data);
             // getPencil();
+            // console.dir(taskCheckbox);
+
+
+            const checkboxes = document.querySelectorAll('.task-col-first input[type="checkbox"]');
+            console.log(checkboxes);
+
+            function handleCheck(e) {
+                console.log(e);
+            }
+            Array.from(checkboxes).map(el => el.addEventListener('click', handleCheck));
+
 
 
         })
@@ -38,20 +50,21 @@ function todo() {
 }
 
 let render = (datas) => {
-    console.log(datas);
+    let totalTak = document.querySelector('.total-task');
     let Taskblock = document.querySelector(`.taskblock`);
 
     datas.forEach(data => {
+
         let oDiv = document.createElement(`div`);
+
         oDiv.className = "task";
+        oDiv.id = `${data.id}`;
         oDiv.innerHTML = `
-          
-                <!-- task content -->
               <div class="task-content">
                     <div class="task-col task-col-first">
                         <label class="task-checkbox">
-                    <input type="checkbox">
-                    <i class="fas fa-square"></i>
+                    <input type="checkbox" id="okbox" name="checkbox" >
+                    <i class="fas fa-square" ></i>
                 </label>
                     </div>
                     <div class="task-col task-col-title" >
@@ -86,7 +99,7 @@ let render = (datas) => {
                             <div class="task-form-body">
                                 <div class="task-form-date">
                                     <input type="date" value="${data.date}">
-                                    <input type="time" value="${data.id}">
+                                    <input type="time" value="${data.time}">
                                 </div>
                             </div>
                         </div>
@@ -129,13 +142,15 @@ let render = (datas) => {
                 
         `;
         Taskblock.appendChild(oDiv);
-        getEdit();
-        btnDel();
-        checkbox();
-        getStar();
+
     })
-
-
+    console.log(datas.length);
+    let sum = datas.length;
+    totalTak.innerHTML = `${sum} task left`;
+    getEdit();
+    btnDel();
+    checkbox();
+    getStar();
 }
 
 
@@ -187,24 +202,26 @@ function getEdit() {
 
 //點擊就有刪除線
 function checkbox() {
-    let taskCheckbox = document.getElementsByClassName('fa-square');
+    let taskCheckbox = document.querySelectorAll('.fa-square');
 
 
     Array.from(taskCheckbox).forEach(el => {
         el.addEventListener('click', function(e) {
-            console.log(el);
 
-            // if (e.target.className == `fas fa-square`) {
-            //     return;
-            // }
+
+            if (e.target.className !== `fas fa-square`) {
+                return;
+            }
             // console.dir(inputText);
-            console.dir(this.parentNode.parentNode.nextElementSibling.children[0]);
-            let inputText = this.parentNode.parentNode.nextElementSibling.children[0];
 
-            if (inputText.className !== "task-title text-throng") {
-                inputText.className = "task-title text-throng";
+            let inputText = this.parentNode.parentNode.parentNode.parentNode;
+            // inputText.classList.toggle('is-done');
+            console.log(this.parentNode.parentNode.parentNode.parentNode);
+
+            if (inputText.className !== "task is-done") {
+                inputText.className = "task is-done";
             } else {
-                inputText.className = "task-title";
+                inputText.className = "task";
             }
 
 
@@ -233,14 +250,25 @@ function getStar() {
 // }
 
 function post() {
-    var myHeaders = new Headers();
-    var urlencoded = new URLSearchParams();
-    // 撈出輸入鍵的值
-
     let date = document.getElementById('j-date').value;
     let time = document.getElementById('j-time').value;
     let files = document.getElementById('files').value;
     let textarea = document.getElementById('task-form-textarea').textContent;
+
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    // var urlencoded = new URLSearchParams();
+    // 撈出輸入鍵的值
+    // urlencoded.append("title", Alltext);
+    // urlencoded.append("date", date);
+    // urlencoded.append("time", time);
+    // urlencoded.append("isCompleted", false);
+    // urlencoded.append("comment", textarea);
+    // urlencoded.append("filte", files);
+    // urlencoded.append("star", false);
+
+
 
 
     var requestOptions = {
@@ -274,16 +302,6 @@ function post() {
             // getStar();
             // btnDel();
 
-
-            inProgress.addEventListener('click', function(e) {
-
-                if (inProgress.className == "slelected") {
-                    console.log(task);
-
-
-                }
-
-            })
         })
         .catch(error => console.log('error', error));
 }
@@ -301,7 +319,7 @@ function addData(obj) {
     let date = document.getElementById('j-date').value;
     let time = document.getElementById('j-time').value;
     let files = document.getElementById('files').value;
-    let textarea = document.getElementById('task-form-textarea').value;
+    let textarea = document.getElementById('task-form-textarea').textContent;
     // console.log(date);
     // 因為要把輸入的值變成 陣列 所以製作一個空物件 
     let todo = {
@@ -311,6 +329,7 @@ function addData(obj) {
         filte: files,
         comment: textarea,
         star: true,
+        id: this.id,
         isCompleted: true
 
     };
@@ -320,5 +339,62 @@ function addData(obj) {
 
     render(Arrdata);
 
+
+}
+/**點選選單 出現效果 */
+function menuClick() {
+    for (let i = 0; i < menuItem.length; i++) {
+        menuItem[i].addEventListener('click', function(e) {
+            paelDisplay(this);
+            taskShow(this.id);
+        })
+    }
+
+
+}
+
+
+function taskShow(tabName) {
+    if (tabName == 'inProgress') {
+
+        console.log('1');
+    } else if (tabName == 'completed') {
+        let otaskblock = document.querySelector('.taskblock');
+        let oDiv = document.createElement(`div`);
+
+        oDiv.className = "task";
+        otaskblock.appendChild(oDiv);
+
+        let tasks = otaskblock.querySelectorAll('.task');
+        console.log(tasks);
+        // let result = [];
+        // result = Array.from(task).map(el => {
+        //     return el.classList.contains("is-done");
+        // })
+        // console.log(result);
+        // render(result);
+        // function isCompleted(){
+        //     if (task.className =='task is-done'){
+
+        //     }
+        // }
+    } else {
+        console.log('3');
+
+    }
+}
+
+function paelDisplay(active) {
+    let taskContents = document.querySelectorAll(".taskblock");
+    for (let i = 0; i < menuItem.length; i++) {
+        if (menuItem[i] == active) {
+            menuItem[i].classList.add("slelected");
+            taskContents[i].style.display = "block";
+        } else {
+            menuItem[i].classList.remove("slelected");
+            taskContents[i].style.display = "none";
+        }
+
+    }
 
 }

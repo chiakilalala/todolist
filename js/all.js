@@ -24,7 +24,7 @@ window.onload = function() {
     del();
     btnDel();
     tabCLick();
-    post();
+    // post();
 
 
 }
@@ -85,18 +85,101 @@ function addData(obj) {
 }
 
 function xxxx(datas) {
-    console.log(datas)
+
     let oTaskblock = document.querySelector(`.taskblock`);
 
     datas.forEach(data => {
         let oDiv = document.createElement(`div`);
+        oDiv.className = "task";
         oDiv.innerHTML = `
-            <h3>${data.title}</h3>
+              <div class="task-content">
+                    <div class="task-col task-col-first">
+                        <label class="task-checkbox">
+                    <input type="checkbox">
+                    <i class="fas fa-square"></i>
+                </label>
+                    </div>
+                    <div class="task-col task-col-title" >
+                        <input type="text" class="task-title" placeholder="feed my rabbit." value="${data.title}" >
+                        <div class="task-info">
+                            <div class="task-col">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>${data.date}</span>
+                            </div>
+                               <div class="task-col">
+                                <i class="far fa-file"></i>
+                            </div>
+                            <div class="task-col">
+                                <i class="far fa-comment-dots"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-col task-col-last">
+                        <i class="far fa-star"></i>
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                </div> 
+
+           <!-- task detail -->
+                 <div class="task-detail">
+                    <div class="task-form">
+                        <div class="task-row">
+                            <div class="task-form-header">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Deadline</span>
+                            </div>
+                            <div class="task-form-body">
+                                <div class="task-form-date">
+                                    <input type="date" value="${data.date}">
+                                    <input type="time" value="${data.time}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-row">
+                            <div class="task-form-header">
+                                <i class="far fa-file"></i>
+                                <span>File</span>
+                            </div>
+                            <div class="task-form-body">
+                                <label class="task-form-file">
+                            <input type="file">
+                            <i class="fas fa-plus"></i>
+                        </label>
+                            </div>
+                        </div>
+                        <div class="task-row">
+                            <div class="task-form-header">
+                                <i class="far fa-comment-dots"></i>
+                                <span>Comment</span>
+                            </div>
+                            <div class="task-form-body">
+                                <div class="task-form-textarea">
+                                    <textarea placeholder="Type Your Blahblahblah in here..."> ${data.comment}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-form-submit">
+                        <a class="button button-cancel">
+                            <i class="fas fa-times"></i>
+                            <span>Cancel</span>
+                        </a>
+                        <a class="button button-save">
+                            <i class="fas fa-check"></i>
+                            <span>Save</span>
+                        </a>
+                    </div>
+                </div>  
+                
         `;
-        // console.log(data);
         oTaskblock.appendChild(oDiv);
+        getEdit();
+        btnDel();
+        checkbox();
+        getStar();
     })
-    console.dir(oTaskblock);
+
 
 }
 
@@ -342,7 +425,7 @@ function post() {
         .catch(error => console.log('error', error));
 }
 
-function getPencil() {
+function getEdit() {
     Array.from(pencil).forEach(el => {
         el.addEventListener('click', function(e) {
             // console.log(this.parentNode.parentNode.parentNode);
@@ -392,5 +475,10 @@ function checkbox() {
 
 }
 
+
+
+function ajax() {
+
+}
 //點擊Inprogress 只顯示有刪除線的list
 console.log(task);
