@@ -27,9 +27,11 @@ function todo() {
 
         })
         .then(data => {
+
+            // let Ndata = JSON.parse(JSON.stringify(data));
             render(data);
 
-            console.log(data);
+            console.log(typeof(data));
             //addData(data);
             // getPencil();
             // console.dir(taskCheckbox);
